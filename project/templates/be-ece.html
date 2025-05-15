@@ -1,0 +1,380 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <meta name="description" content="">
+        <meta name="author" content="">
+
+        <title>B.E ECE</title>
+
+        <!-- CSS FILES -->        
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400&family=Sono:wght@200;300;400;500;700&display=swap" rel="stylesheet">
+                        
+        <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+
+        <link rel="stylesheet" href="{% static 'css/bootstrap-icons.css' %}">
+
+        <link rel="stylesheet" href="{% static 'css/owl.carousel.min.css' %}">
+        
+        <link rel="stylesheet" href="{% static 'css/owl.theme.default.min.css' %}">
+
+        <link href="{% static 'css/templatemo-pod-talk.css' %}" rel="stylesheet">
+<!--
+
+TemplateMo 584 Pod Talk
+
+https://templatemo.com/tm-584-pod-talk
+
+-->
+    </head>
+    
+    <body>
+
+        <main>
+
+            <nav class="navbar navbar-expand-lg">
+                <div class="container">
+                    <a class="navbar-brand me-lg-5 me-0" href="{% url 'index' %}">
+                        <img src="{% static 'images/Education Mania Logo.png' %}" class="logo-image img-fluid" alt="templatemo pod talk">
+                    </a>
+
+                   <form action="{% url 'search' %}" method="get" class="custom-form search-form flex-fill me-3" role="search">
+                        <div class="input-group input-group-lg">    
+                            <input name="search" type="search" class="form-control" id="search" placeholder="Search here" aria-label="Search" autocomplete="off" autocomplete="off" spellcheck="false" autocorrect="off" autocapitalize="off">
+
+                            <button type="submit" class="form-control" id="submit">
+                                <i class="bi-search"></i>
+                            </button>
+                        </div>
+                    </form>
+
+                    <div id="suggestions" class="list-group position-absolute w-100" style="z-index: 1000;"></div>
+
+                    {% if results %}
+                    <div class="search-results-container mt-3 p-3 border rounded bg-light">
+                        <h5>Search Results for "{{ query }}":</h5>
+                        <ul class="list-group">
+                            {% for result in results %}
+                            <li class="list-group-item">
+                                <a href="{{ result.url }}" class="text-decoration-none">
+                                    <strong>{{ result.filename }}</strong>
+                                </a>
+                                <p>{{ result.snippet }}...</p>
+                            </li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                    {% endif %}
+    
+    
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+    
+                    <div class="collapse navbar-collapse" id="navbarNav">
+                        <ul class="navbar-nav ms-lg-auto">
+                            <li class="nav-item">
+                                <a class="nav-link" href="{% url 'index' %}">Home</a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link active" href="{% url 'about' %}">About</a>
+                            </li>
+
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarLightDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">Streams</a>
+
+                                <ul class="dropdown-menu dropdown-menu-light" aria-labelledby="navbarLightDropdownMenuLink">
+                                    <li><a class="dropdown-item" href="{% url 'listing-page' %}">Arts</a></li>
+
+                                    <li><a class="dropdown-item" href="{% url 'detail-page' %}">Engineering</a></li>
+                                </ul>
+                            </li>
+    
+                            <li class="nav-item">
+                                <a class="nav-link" href="{% url 'contact' %}">Contact</a>
+                            </li>
+                        </ul>
+
+                        <div class="ms-4">
+                            <a href="#section_2" class="btn custom-btn custom-border-btn smoothscroll">Get started</a>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+
+
+            <header class="site-header d-flex flex-column justify-content-center align-items-center">
+                <div class="container">
+                    <div class="row">
+
+                        <div class="col-lg-12 col-12 text-center">
+
+                            <h2 class="mb-0">B.E Electronic and COmmunication Engineering</h2>
+                        </div>
+
+                    </div>
+                </div>
+            </header>
+            
+
+            <section class="about-section section-padding" id="section_2">
+                <div class="container">
+                    <div class="row">
+
+                        <div class="col-lg-8 col-12 mx-auto">
+                            <div class="pb-5 mb-5">
+                                <div class="section-title-wrap mb-4">
+                                    <h4 class="section-title">Why ECE in 2025</h4>
+                                </div>
+
+                                <p>In 2025, ECE (Electronics and Communication Engineering) is one of the hottest and most versatile branches, sitting right at the crossroads of hardware innovation and digital transformation. With the rise of 5G, 6G research, IoT, smart cities, and embedded AI systems, ECE engineers are in huge demand. From designing smart sensors in electric vehicles to building communication systems for satellites, the scope is massive. Plus, ECE grads aren't stuck in just hardware—many are now thriving in software roles like embedded development, robotics, machine learning, and even full-stack development. Companies working in automation, semiconductors (think Intel, Qualcomm, Texas Instruments), and telecom (like Jio, Ericsson, or Airtel 5G) are actively hiring ECE engineers to fuel innovation. Whether you're fascinated by microchips or obsessed with how devices “talk” wirelessly, ECE in 2025 gives you the chance to play a critical role in building the connected world of tomorrow.</p>
+
+                                <p></p>
+
+                                <img src="{% static 'images/ECE stream.png' %}" class="about-image mt-5 img-fluid" alt="">
+                            </div>
+                        </div>
+
+                        <div class="col-lg-12 col-12">
+                            <div class="section-title-wrap mb-5">
+                             <center>   <h4 class="section-title">Core Responible's</h4>  </center>
+                            </div>
+                        </div>
+                        <center>
+                        <div class="col-lg-3 col-md-6 col-12 mb-4 mb-lg-0">
+                            <div class="team-thumb bg-white shadow-lg">
+                                <img src="{% static 'images/profile/cute-smiling-woman-outdoor-portrait.jpg' %}" class="about-image img-fluid" alt="">
+
+                                <div class="team-info">
+                                    <h4 class="mb-2">
+                                        Taylor
+                                        <img src="{% static 'images/verified.png' %}" class="verified-image img-fluid" alt="">
+                                        
+                                    </h4>
+
+                                    <span class="badge">Data Analyst</span>
+
+                                    <span class="badge">Arts Stream</span>
+                                    
+
+                                </div>
+
+                                <div class="social-share">
+                                        <ul class="social-icon">
+                                            <li class="social-icon-item">
+                                                <a href="#" class="social-icon-link bi-twitter"></a>
+                                            </li>
+
+                                            <li class="social-icon-item">
+                                                <a href="#" class="social-icon-link bi-facebook"></a>
+                                            </li>
+
+                                            <li class="social-icon-item">
+                                                <a href="#" class="social-icon-link bi-pinterest"></a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                            </div>
+                        </div>
+                        </center>
+
+                        <div class="col-lg-8 col-12 mx-auto">
+                            <div class="pb-5 mb-5">
+                                <div class="section-title-wrap mb-4">
+                                    <h4 class="section-title">Roadmap</h4>
+                                </div>
+
+                                <p>In your first year of ECE, it’s all about laying down the basics. You’ll start with Engineering Mathematics, Physics, and an intro to Programming (usually in C or Python). Simultaneously, you’ll touch the surface of circuit theory and basic electronics—this is your warm-up phase. Understanding how voltage, current, and signals work is crucial before you go into the deep tech stuff. Moving into the second year, things heat up with core subjects like Analog and Digital Electronics, Signals and Systems, Electronic Devices, and Network Analysis. You’ll learn to use simulation tools like Multisim, MATLAB, and maybe even start basic Arduino or Raspberry Pi projects. The highlight of this year is learning how both analog and digital worlds function side-by-side.
+
+                                    The third year is where you get to taste the magic of communication engineering—Electromagnetic Theory, Control Systems, VLSI, Microprocessors (8085/8051), and most importantly, Digital Communication. This is the best time to dive into mini-projects like voice-controlled devices, wireless sensor systems, or even a basic radio transmitter. You can also explore embedded systems and IoT, and tools like Verilog or VHDL if you’re interested in chip design. Start interning and attending workshops—especially on topics like AIoT, robotics, or wireless communication. Finally, in the fourth year, you're focusing on advanced electives like Machine Learning for ECE, Optical Fiber Communication, or Satellite Systems. This is also when you’ll complete your major project—go bold with something like a home automation system, wearable health tracker, or 5G communication module. Meanwhile, prep for placements or GATE, build a killer resume, and showcase your hands-on work on GitHub or LinkedIn. Whether you're heading to core companies or tech startups, this roadmap sets you up for both.</p>
+                                <a href="https://www.youtube.com/watch?v=8WdYWx48ac8" target="_blank">Click the link to Watch the Roadmap</a>
+
+                                <p></p>
+
+                                <img src="{% static 'images/Roadmap for ECE.jpg' %}" class="about-image mt-5 img-fluid" alt="">
+                            </div>
+                        </div>
+
+                        <div class="col-lg-8 col-12 mx-auto">
+                            <div class="pb-5 mb-5">
+                                <div class="section-title-wrap mb-4">
+                                    <h4 class="section-title">Books to Learn</h4>
+                                </div>
+
+                                <p>To slay your ECE journey, the right books are like your cheat codes. Start with “Basic Electronics” by V.K. Mehta in the first year—super beginner-friendly and perfect for concept clarity. For mathematics, go with B.S. Grewal and Erwin Kreyszig (for advanced engineering math). When you get into Electronic Devices, “Electronic Devices and Circuits” by Boylestad is the ultimate classic. For Digital Electronics, you simply can’t skip “Digital Logic and Computer Design” by M. Morris Mano—it’s the holy grail for logic gates and number systems. When diving into Signals and Systems, grab Oppenheim & Willsky, and for Communication Systems, Simon Haykin or B.P. Lathi are your best bets. Want to master Control Systems? Go with Nagrath & Gopal or Ogata. For Microprocessors, Ramesh Gaonkar’s 8085 book is both legendary and beginner-friendly. If you're stepping into VLSI or chip design, “CMOS VLSI Design” by Weste and Harris is your advanced-level bestie.
+
+                                    If you're prepping for placements or GATE, books by Made Easy or ACE Academy are great for problem practice. And don't sleep on modern topics—if you're into IoT and Embedded, Jeremy Blum’s Exploring Arduino or “Embedded Systems” by Raj Kamal are fantastic. For hands-on ML/AI for electronics, even Python-based books like "Hands-On ML with Scikit-Learn" by Aurélien Géron can help if you're cross-skilling.
+                                    
+                                    </p>
+                                <a href="https://engineering.careers360.com/articles/what-are-best-books-for-gate-ec" target="_blank">Click the link to Watch the Blog.</a>
+
+                                <p></p>
+
+                                <img src="{% static 'images/Books for ECE.jpg' %}" class="about-image mt-5 img-fluid" alt="">
+                            </div>
+                        </div>
+
+
+                        
+                  
+                    
+        </main>
+        </center>
+
+
+
+
+        <footer class="site-footer">   
+            <div class="container">
+                <div class="row">
+
+                    <div class="col-lg-6 col-12 mb-5 mb-lg-0">
+                        <div class="subscribe-form-wrap">
+                            <h6>Subscribe. Every weekly.</h6>
+
+                                 <form id="subscribeForm" class="custom-form subscribe-form" role="form">
+                        <input type="email" name="subscribe-email" id="subscriberEmail" class="form-control" placeholder="Email Address" required>
+
+                        <div class="col-lg-12 col-12">
+                            <button type="submit" class="form-control" id="submit">Subscribe</button>
+                        </div>
+                    </form>
+
+                    <script>
+                        document.getElementById('subscribeForm').addEventListener('submit', function(e) {
+                            e.preventDefault();
+                            const email = document.getElementById('subscriberEmail').value;
+                            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                        
+                            if (email && emailRegex.test(email)) {
+                                fetch('/api/subscribe/', {
+                                    method: 'POST',
+                                    headers: {
+                                        'Content-Type': 'application/json'
+                                    },
+                                    body: JSON.stringify({ email: email })
+                                })
+                                .then(response => response.json())
+                                .then(data => {
+                                    if (data.message === 'Successfully subscribed') {
+                                        alert('✅ Successfully subscribed!');
+                                        document.getElementById('subscriberEmail').value = '';
+                                    } else if (data.error) {
+                                        alert('❌ Error: ' + data.error);
+                                    } else {
+                                        alert('❌ Error: Unexpected response from the server.');
+                                    }
+                                })
+                                .catch(() => {
+                                    alert('❌ Error: Something went wrong.');
+                                });
+                            } else {
+                                alert("⚠️ Please enter a valid email address.");
+                            }
+                        });
+                        </script>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-3 col-md-6 col-12 mb-4 mb-md-0 mb-lg-0">
+                        <h6 class="site-footer-title mb-3">Contact</h6>
+
+                        <p class="mb-2"><strong class="d-inline me-2">Phone:</strong> 010-020-0340</p>
+
+                        <p>
+                            <strong class="d-inline me-2">Email:</strong>
+                            <a href="#">inquiry@pod.co</a> 
+                        </p>
+                    </div>
+
+                    <div class="col-lg-3 col-md-6 col-12">
+                        <h6 class="site-footer-title mb-3">Download Mobile</h6>
+
+                        <div class="site-footer-thumb mb-4 pb-2">
+                            <div class="d-flex flex-wrap">
+                                <a href="#">
+                                    <img src="{% static 'images/app-store.png' %}" class="me-3 mb-2 mb-lg-0 img-fluid" alt="">
+                                </a>
+
+                                <a href="#">
+                                    <img src="{% static 'images/play-store.png' %}" class="img-fluid" alt="">
+                                </a>
+                            </div>
+                        </div>
+
+                        <h6 class="site-footer-title mb-3">conect through Social</h6>
+
+                        <ul class="social-icon">
+                            <li class="social-icon-item">
+                                <a href="#" class="social-icon-link bi-instagram">
+                                    <link rel="stylesheet" href="https://www.instagram.com/">
+                                </a>
+                            </li>
+
+                            <li class="social-icon-item">
+                                <a href="#" class="social-icon-link bi-twitter"></a>
+                            </li>
+
+                            <li class="social-icon-item">
+                                <a href="#" class="social-icon-link bi-whatsapp"></a>
+                            </li>
+                        </ul>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="container pt-5">
+                <div class="row align-items-center">
+
+                    <div class="col-lg-2 col-md-3 col-12">
+                        <a class="navbar-brand" href="{% url 'index' %}">
+                            <img src="{% static 'images/Education Mania Logo.png' %}" class="logo-image img-fluid" alt="templatemo pod talk">
+                        </a>
+                    </div>
+
+                    <div class="col-lg-7 col-md-9 col-12">
+                        <ul class="site-footer-links">
+                            <li class="site-footer-link-item">
+                                <a href="#" class="site-footer-link">Homepage</a>
+                            </li>
+
+                            <li class="site-footer-link-item">
+                                <a href="#" class="site-footer-link">Browse episodes</a>
+                            </li>
+
+                            <li class="site-footer-link-item">
+                                <a href="#" class="site-footer-link">Help Center</a>
+                            </li>
+
+                            <li class="site-footer-link-item">
+                                <a href="#" class="site-footer-link">Contact Us</a>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="col-lg-3 col-12">
+                        <p class="copyright-text mb-0">Copyright © 2025 Education Mania. All Rights Reserved
+                        <br><br>
+                    </div>
+                </div>
+            </div>
+        </footer>
+
+
+        <!-- JAVASCRIPT FILES -->
+        <script src="{% static 'js/jquery.min.js' %}"></script>
+        <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
+        <script src="{% static 'js/owl.carousel.min.js' %}"></script>
+        <script src="{% static 'js/custom.js' %}"></script>
+
+    </body>
+</html>

@@ -1,0 +1,344 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <meta name="description" content="">
+        <meta name="author" content="">
+
+        <title>About Us Education Mania</title>
+
+        <!-- CSS FILES -->        
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400&family=Sono:wght@200;300;400;500;700&display=swap" rel="stylesheet">
+                        
+        <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+
+        <link rel="stylesheet" href="{% static 'css/bootstrap-icons.css' %}">
+
+        <link rel="stylesheet" href="{% static 'css/owl.carousel.min.css' %}">
+        
+        <link rel="stylesheet" href="{% static 'css/owl.theme.default.min.css' %}">
+
+        <link href="{% static 'css/templatemo-pod-talk.css' %}" rel="stylesheet">
+<!--
+
+TemplateMo 584 Pod Talk
+
+https://templatemo.com/tm-584-pod-talk
+
+-->
+    </head>
+    
+    <body>
+
+        <main>
+
+            <nav class="navbar navbar-expand-lg">
+                <div class="container">
+                    <a class="navbar-brand me-lg-5 me-0" href="{% url 'index' %}">
+                        <img src="{% static 'images/Education Mania Logo.png' %}" class="logo-image img-fluid" alt="templatemo pod talk">
+                    </a>
+<form action="{% url 'search' %}" method="get" class="custom-form search-form flex-fill me-3" role="search">
+                        <div class="input-group input-group-lg">    
+                            <input name="search" type="search" class="form-control" id="search" placeholder="Search here" aria-label="Search" autocomplete="off" autocomplete="off" spellcheck="false" autocorrect="off" autocapitalize="off">
+
+                            <button type="submit" class="form-control" id="submit">
+                                <i class="bi-search"></i>
+                            </button>
+                        </div>
+                    </form>
+
+                    <div id="suggestions" class="list-group position-absolute w-100" style="z-index: 1000;"></div>
+
+                    {% if results %}
+                    <div class="search-results-container mt-3 p-3 border rounded bg-light">
+                        <h5>Search Results for "{{ query }}":</h5>
+                        <ul class="list-group">
+                            {% for result in results %}
+                            <li class="list-group-item">
+                                <a href="{{ result.url }}" class="text-decoration-none">
+                                    <strong>{{ result.filename }}</strong>
+                                </a>
+                                <p>{{ result.snippet }}...</p>
+                            </li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                    {% endif %}
+                        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+    
+                    <div class="collapse navbar-collapse" id="navbarNav">
+                        <ul class="navbar-nav ms-lg-auto">
+                            <li class="nav-item">
+                                <a class="nav-link" href="{% url 'index' %}">Home</a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link active" href="{% url 'about' %}">About</a>
+                            </li>
+
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarLightDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">Streams</a>
+
+                                <ul class="dropdown-menu dropdown-menu-light" aria-labelledby="navbarLightDropdownMenuLink">
+                                    <li><a class="dropdown-item" href="{% url 'listing-page' %}">Arts</a></li>
+
+                                    <li><a class="dropdown-item" href="{% url 'detail-page' %}">Engineering</a></li>
+                                </ul>
+                            </li>
+    
+                            <li class="nav-item">
+                                <a class="nav-link" href="{% url 'contact' %}">Contact</a>
+                            </li>
+                        </ul>
+
+                        <div class="ms-4">
+                            <a href="#section_2" class="btn custom-btn custom-border-btn smoothscroll">Get started</a>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+
+
+            <header class="site-header d-flex flex-column justify-content-center align-items-center">
+                <div class="container">
+                    <div class="row">
+
+                        <div class="col-lg-12 col-12 text-center">
+
+                            <h2 class="mb-0">About Us</h2>
+                        </div>
+
+                    </div>
+                </div>
+            </header>
+            
+
+            <section class="about-section section-padding" id="section_2">
+                <div class="container">
+                    <div class="row">
+
+                        
+
+                        <section class="about-section section-padding" id="section_2">
+                            <div class="container">
+                                <div class="row">
+            
+                                    <div class="col-lg-8 col-12 mx-auto">
+                                        <div class="pb-5 mb-5">
+                                            <div class="section-title-wrap mb-4">
+                                                <h4 class="section-title">Our Goal</h4>
+                                            </div>
+            
+                                            <p>The goal of E-learning in 2025 is to make education more accessible, personalized, and flexible for everyone—no matter where they are or what their schedule looks like. It’s all about breaking the old-school boundaries of learning that were stuck in classrooms and rigid timings. E-learning lets students and professionals upskill at their own pace, using videos, interactive quizzes, gamified modules, and AI-driven learning paths that adapt to how fast (or slow) you're going. Whether you’re learning Python at midnight, revising a business course on your phone during your commute, or prepping for a cloud cert from your laptop, e-learning makes it possible. Plus, with tech like AR/VR and AI tutors in the mix now, it’s not just convenient—it’s becoming super engaging too. Ultimately, the goal is to create lifelong learners who can grow continuously in this fast-moving digital world, without needing to step into a traditional classroom.</p>
+            
+                                            <p></p>
+            
+                                            <img src="{% static 'images/goal.jpg' %}" class="about-image mt-5 img-fluid" alt="">
+                                        </div>
+                                    </div>
+
+                                    <section class="about-section section-padding" id="section_2">
+                                        <div class="container">
+                                            <div class="row">
+                        
+                                                <div class="col-lg-8 col-12 mx-auto">
+                                                    <div class="pb-5 mb-5">
+                                                        <div class="section-title-wrap mb-4">
+                                                            <h4 class="section-title">Our story</h4>
+                                                        </div>
+                        
+                                                        <p>Electronic education, is super important in today’s digital world because it breaks down barriers to learning and makes education accessible to everyone, anytime and anywhere. Whether you're in a remote village or a big city, all you need is an internet connection to tap into quality content, expert lectures, and interactive tools. It’s flexible, cost-effective, and lets students learn at their own pace—perfect for people juggling work, family, or other commitments. Plus, it encourages self-discipline, boosts tech skills, and opens doors to global classrooms. In short, e-education is revolutionizing how we learn and keeping education relevant in a fast-paced, tech-driven era.</p>
+                        
+                                                        <p></p>
+                        
+                                                        <img src="{% static 'images/About Us.png' %}" class="about-image mt-5 img-fluid" alt="">
+                                                    </div>
+                                                </div>
+                        
+                                                <section class="about-section section-padding" id="section_2">
+                                                    <div class="container">
+                                                        <div class="row">
+                                    
+                                                            <div class="col-lg-8 col-12 mx-auto">
+                                                                <div class="pb-5 mb-5">
+                                                                    <div class="section-title-wrap mb-4">
+                                                                        <h4 class="section-title">What students need from us</h4>
+                                                                    </div>
+                                    
+                                                                    <p>What students really need from E-learning in 2025 isn’t just videos and slides—it’s a complete, engaging, and supportive learning experience. First off, they need clarity and structure—clear roadmaps, step-by-step guidance, and well-organized content so they don’t feel lost. Interactive elements like quizzes, hands-on projects, and real-world case studies are key, because students want to apply what they’re learning, not just memorize it. They also need personalization, like AI-driven learning paths or content recommendations that adjust to their pace and learning style.
+
+                                                                        On top of that, students crave community and connection—whether it's through discussion forums, live mentor sessions, or peer-to-peer projects, they don’t want to feel like they’re learning alone. And let’s not forget career support—certifications, job-ready skills, resume projects, and mock interviews go a long way. In short, students need e-learning that feels less like “watch and learn” and more like “learn, build, ask, and grow.”</p>
+                                    
+                                                                    <p></p>
+                                    
+                                                                    <img src="{% static 'images/learn.jpg' %}" class="about-image mt-5 img-fluid" alt="">
+                                                                </div>
+                                                            </div>
+            
+
+               
+
+                    </div>
+                </div>
+            </section>
+        </main>
+
+
+      
+       
+       
+        <footer class="site-footer">   
+            <div class="container">
+                <div class="row">
+
+                    <div class="col-lg-6 col-12 mb-5 mb-lg-0">
+                        <div class="subscribe-form-wrap">
+                            <h6>Subscribe. Every weekly.</h6>
+
+                                 <form id="subscribeForm" class="custom-form subscribe-form" role="form">
+                        <input type="email" name="subscribe-email" id="subscriberEmail" class="form-control" placeholder="Email Address" required>
+
+                        <div class="col-lg-12 col-12">
+                            <button type="submit" class="form-control" id="submit">Subscribe</button>
+                        </div>
+                    </form>
+
+                    <script>
+                        document.getElementById('subscribeForm').addEventListener('submit', function(e) {
+                            e.preventDefault();
+                            const email = document.getElementById('subscriberEmail').value;
+                            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                        
+                            if (email && emailRegex.test(email)) {
+                                fetch('/api/subscribe/', {
+                                    method: 'POST',
+                                    headers: {
+                                        'Content-Type': 'application/json'
+                                    },
+                                    body: JSON.stringify({ email: email })
+                                })
+                                .then(response => response.json())
+                                .then(data => {
+                                    if (data.message === 'Successfully subscribed') {
+                                        alert('✅ Successfully subscribed!');
+                                        document.getElementById('subscriberEmail').value = '';
+                                    } else if (data.error) {
+                                        alert('❌ Error: ' + data.error);
+                                    } else {
+                                        alert('❌ Error: Unexpected response from the server.');
+                                    }
+                                })
+                                .catch(() => {
+                                    alert('❌ Error: Something went wrong.');
+                                });
+                            } else {
+                                alert("⚠️ Please enter a valid email address.");
+                            }
+                        });
+                        </script>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-3 col-md-6 col-12 mb-4 mb-md-0 mb-lg-0">
+                        <h6 class="site-footer-title mb-3">Contact</h6>
+
+                        <p class="mb-2"><strong class="d-inline me-2">Phone:</strong> 010-020-0340</p>
+
+                        <p>
+                            <strong class="d-inline me-2">Email:</strong>
+                            <a href="#">educationmania@gmail.com</a> 
+                        </p>
+                    </div>
+
+                    <div class="col-lg-3 col-md-6 col-12">
+                        <h6 class="site-footer-title mb-3">Download Mobile</h6>
+
+                        <div class="site-footer-thumb mb-4 pb-2">
+                            <div class="d-flex flex-wrap">
+                                <a href="#">
+                                    <img src="{% static 'images/app-store.png' %}" class="me-3 mb-2 mb-lg-0 img-fluid" alt="">
+                                </a>
+
+                                <a href="#">
+                                    <img src="{% static 'images/play-store.png' %}" class="img-fluid" alt="">
+                                </a>
+                            </div>
+                        </div>
+
+                        <h6 class="site-footer-title mb-3">conect through Social</h6>
+
+                        <ul class="social-icon">
+                            <li class="social-icon-item">
+                                <a href="#" class="social-icon-link bi-instagram">
+                                    <link rel="stylesheet" href="https://www.instagram.com/">
+                                </a>
+                            </li>
+
+                            <li class="social-icon-item">
+                                <a href="#" class="social-icon-link bi-twitter"></a>
+                            </li>
+
+                            <li class="social-icon-item">
+                                <a href="#" class="social-icon-link bi-whatsapp"></a>
+                            </li>
+                        </ul>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="container pt-5">
+                <div class="row align-items-center">
+
+                    <div class="col-lg-2 col-md-3 col-12">
+                        <a class="navbar-brand" href="{% url 'index' %}">
+                            <img src="{% static 'images/Education Mania Logo.png' %}" class="logo-image img-fluid" alt="templatemo pod talk">
+                        </a>
+                    </div>
+
+                    <div class="col-lg-7 col-md-9 col-12">
+                        <ul class="site-footer-links">
+                            <li class="site-footer-link-item">
+                                <a href="#" class="site-footer-link">Homepage</a>
+                            </li>
+
+                            <li class="site-footer-link-item">
+                                <a href="#" class="site-footer-link">Browse episodes</a>
+                            </li>
+
+                            <li class="site-footer-link-item">
+                                <a href="#" class="site-footer-link">Help Center</a>
+                            </li>
+
+                            <li class="site-footer-link-item">
+                                <a href="#" class="site-footer-link">Contact Us</a>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="col-lg-3 col-12">
+                        <p class="copyright-text mb-0">Copyright © 2025 Education Mania. All Rights Reserved
+                        <br><br>
+                    </div>
+                </div>
+            </div>
+        </footer>
+
+
+        <!-- JAVASCRIPT FILES -->
+        <script src="{% static 'js/jquery.min.js' %}"></script>
+        <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
+        <script src="{% static 'js/owl.carousel.min.js' %}"></script>
+        <script src="{% static 'js/custom.js' %}"></script>
+
+    </body>
+</html>

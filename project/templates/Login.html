@@ -1,0 +1,377 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+<title>Login & Sign Up - Education Mania</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+  * {
+    box-sizing: border-box;
+  }
+  html, body {
+    margin: 0;
+    height: 100%;
+    width: 100%;
+    font-family: 'Poppins', sans-serif;
+    color: #333;
+    background: #87d4e8e6; /* Changed background to white */
+  }
+  body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh; /* full viewport height */
+    overflow: hidden;
+    padding: 20px;
+  }
+
+  #pageHeader {
+    font-size: 2.4rem;
+    font-weight: 700;
+    color: #f7f7f7;
+    text-shadow: 0 2px 8px rgba(0,0,0,0.8);
+    margin-bottom: 20px;
+    text-align: center;
+    user-select: none;
+  }
+
+  #container {
+    position: relative;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 20px;
+    width: 100%;
+    max-width: 350px;
+    box-shadow: 0 15px 30px rgba(0,0,0,0.3);
+    padding: 30px 30px 40px;
+    display: flex;
+    flex-direction: column;
+    max-height: 600px;
+    overflow-y: auto; /* if content grows */
+    /* Container background image */
+    background-image: url('https://images.unsplash.com/photo-1584697964405-f399c01f9769?auto=format&fit=crop&w=640&q=80');
+    background-repeat: no-repeat;
+    background-position: center 20px;
+    background-size: cover;
+  }
+
+  /* overlay effect inside container for readability */
+  #container::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(255,255,255,0.85);
+    border-radius: 20px;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .toggle-buttons, form, label, input, select, .buttons-row, .google-btn {
+    position: relative;
+    z-index: 1; /* above overlay */
+  }
+
+  .toggle-buttons {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 25px;
+  }
+  .toggle-buttons button {
+    background: transparent;
+    border: none;
+    color: #888;
+    font-weight: 600;
+    font-size: 1rem;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-bottom: 3px solid transparent;
+    transition: all 0.3s ease;
+  }
+  .toggle-buttons button.active {
+    color: #4e54c8;
+    border-color: #4e54c8;
+  }
+  form {
+    display: none;
+    flex-direction: column;
+  }
+  form.active {
+    display: flex;
+  }
+  label {
+    font-weight: 600;
+    margin-bottom: 6px;
+    font-size: 0.85rem;
+    color: #444;
+  }
+  input[type="text"],
+  input[type="password"],
+  input[type="email"],
+  input[type="date"],
+  select {
+    padding: 12px 15px;
+    font-size: 1rem;
+    border: 2px solid #ddd;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    transition: border-color 0.3s ease;
+    outline-offset: 0;
+    background: #fff;
+  }
+  input[type="text"]:focus,
+  input[type="password"]:focus,
+  input[type="email"]:focus,
+  input[type="date"]:focus,
+  select:focus {
+    border-color: #4e54c8;
+    outline: none;
+    background: #fff;
+  }
+  .buttons-row {
+    display: flex;
+    justify-content: flex-end;
+    gap: 15px;
+  }
+  button.btn {
+    background: #4e54c8;
+    color: white;
+    font-weight: 600;
+    font-size: 1rem;
+    padding: 12px 25px;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    box-shadow: 0 6px 10px rgba(78, 84, 200, 0.3);
+    transition: background-color 0.3s ease;
+  }
+  button.btn:hover {
+    background: #3b3fab;
+  }
+  button.btn.cancel {
+    background: #ccc;
+    color: #444;
+    box-shadow: none;
+  }
+  button.btn.cancel:hover {
+    background: #bbb;
+  }
+  /* Google button styling */
+  .google-btn {
+    margin-top: 15px;
+    border: 2px solid #4285f4;
+    border-radius: 12px;
+    padding: 12px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+    color: #4285f4;
+    font-size: 1rem;
+    background: #fff;
+    box-shadow: 0 6px 10px rgba(66, 133, 244, 0.3);
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+  .google-btn:hover {
+    background: #4285f4;
+    color: #fff;
+  }
+  .google-icon {
+    width: 20px;
+    height: 20px;
+    margin-right: 10px;
+  }
+  /* Home button styling */
+  .home-btn {
+    position: absolute;
+    top: 25px;
+    left: 25px;
+    background: #4e54c8;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    padding: 8px 18px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    z-index: 10;
+    box-shadow: 0 2px 8px rgba(78, 84, 200, 0.15);
+    transition: background 0.2s;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .home-btn:hover {
+    background: #3b3fab;
+    color: #fff;
+    text-decoration: none;
+  }
+  /* Responsive scaling */
+  @media (max-width: 350px) {
+    body, #container {
+      max-width: 100vw;
+      border-radius: 0;
+      height: 100vh;
+      max-height: 100vh;
+    }
+  }
+</style>
+</head>
+<body>
+  <a href="{% url 'index'%}" class="home-btn" title="Go to Home">
+    <!-- Optional: Home icon SVG -->
+    <svg width="18" height="18" fill="none" viewBox="0 0 24 24"><path fill="#fff" d="M12 5.69l5 4.5V18a1 1 0 0 1-1 1h-3v-4H11v4H8a1 1 0 0 1-1-1v-7.81l5-4.5zm7 6.81V20a3 3 0 0 1-3 3h-3a1 1 0 0 1-1-1v-4H9v4a1 1 0 0 1-1 1H5a3 3 0 0 1-3-3v-7.5a1 1 0 0 1 .29-.71l9-8.1a1 1 0 0 1 1.42 0l9 8.1a1 1 0 0 1 .29.71z"/></svg>
+    Home
+  </a>
+  <h1 id="pageHeader" tabindex="0" aria-label="Education Mania heading">Education Mania</h1>
+  <div id="container" role="main" aria-label="Authentication Interface">
+    <div class="toggle-buttons" role="tablist" aria-label="Authentication Tabs">
+      <button id="loginTab" class="active" role="tab" aria-selected="true" aria-controls="loginForm" tabindex="0">Login</button>
+      <button id="signupTab" role="tab" aria-selected="false" aria-controls="signupForm" tabindex="-1">Sign Up</button>
+    </div>
+    <!-- Login Form -->
+    <form id="loginForm" class="active" aria-labelledby="loginTab" novalidate>
+      <label for="loginName">Name</label>
+      <input type="text" id="loginName" name="loginName" placeholder="Enter your name" required autocomplete="name" />
+      
+      <label for="loginPassword">Password</label>
+      <input type="password" id="loginPassword" name="loginPassword" placeholder="Enter your password" required autocomplete="current-password" minlength="6" />
+      
+      <div class="buttons-row">
+        <button type="submit" class="btn ok">Ok</button>
+        <button type="button" class="btn cancel" id="cancelLogin">Cancel</button>
+      </div>
+      
+      <div class="google-btn" role="button" tabindex="0" id="googleLogin" aria-label="Continue with Google">
+        <svg class="google-icon" viewBox="0 0 533.5 544.3" xmlns="http://www.w3.org/2000/svg"><path fill="#4285F4" d="M533.5 278.4c0-17.9-1.5-35-4.3-51.6H272v97.6h146.9c-6.4 34.7-26.5 64.2-56.4 83.9l91.5 71c53.5-49.3 84.5-121.6 84.5-201z"/><path fill="#34A853" d="M272 544.3c76 0 139.8-25.1 186.3-68.3l-91.5-71c-25.4 17-58 27-94.8 27-73.3 0-135.5-49.5-157.7-115.8l-92.1 71.1c43.3 85 132.1 156 249.8 156z"/><path fill="#FBBC05" d="M114.3 327.9c-9.6-28.9-9.6-60.5 0-89.4l-92.1-71.1c-37.3 73.1-37.3 160.9 0 234l92.1-73.5z"/><path fill="#EA4335" d="M272 107.8c39.6-.6 77.8 15 106.7 43.9l80-80.1c-50-46.3-115.1-70.2-186.7-69.4-117.8 0-206.5 71-249.8 156l92.1 71.1c22-66.3 84.4-115.5 157.7-121.5z"/></svg>
+        Continue with Google
+      </div>
+    </form>
+
+    <!-- Sign Up Form -->
+    <form id="signupForm" aria-labelledby="signupTab" novalidate>
+      <label for="signupName">Name</label>
+      <input type="text" id="signupName" name="signupName" placeholder="Enter your full name" required autocomplete="name" />
+
+      <label for="signupDOB">Date of Birth</label>
+      <input type="date" id="signupDOB" name="signupDOB" required max="" />
+
+      <label for="signupFrom">Where you from</label>
+      <select id="signupFrom" name="signupFrom" required>
+        <option value="" disabled selected>Select an option</option>
+        <option value="12th">Completed 12th Standard</option>
+        <option value="college">Completed College</option>
+        <option value="info">Just for Information</option>
+      </select>
+
+      <label for="signupEmail">Email Id</label>
+      <input type="email" id="signupEmail" name="signupEmail" placeholder="Enter your email" required autocomplete="email" />
+
+      <label for="signupPassword">Password</label>
+      <input type="password" id="signupPassword" name="signupPassword" placeholder="Create a password" required minlength="6" autocomplete="new-password" />
+      
+      <div class="buttons-row">
+        <button type="submit" class="btn ok">Ok</button>
+        <button type="button" class="btn cancel" id="cancelSignup">Cancel</button>
+      </div>
+    </form>
+  </div>
+
+<script>
+  (() => {
+    // DOM elements
+    const loginTab = document.getElementById('loginTab');
+    const signupTab = document.getElementById('signupTab');
+    const loginForm = document.getElementById('loginForm');
+    const signupForm = document.getElementById('signupForm');
+    const cancelSignupBtn = document.getElementById('cancelSignup');
+    const cancelLoginBtn = document.getElementById('cancelLogin');
+    const googleLoginBtn = document.getElementById('googleLogin');
+
+    // Set max DOB date to today
+    const dobInput = document.getElementById('signupDOB');
+    const todayISO = new Date().toISOString().split('T')[0];
+    dobInput.setAttribute('max', todayISO);
+
+    // Switch tabs function
+    function switchTab(tabName) {
+      if (tabName === 'login') {
+        loginTab.classList.add('active');
+        signupTab.classList.remove('active');
+        loginTab.setAttribute('aria-selected', 'true');
+        loginTab.tabIndex = 0;
+        signupTab.setAttribute('aria-selected', 'false');
+        signupTab.tabIndex = -1;
+        loginForm.classList.add('active');
+        signupForm.classList.remove('active');
+      } else {
+        signupTab.classList.add('active');
+        loginTab.classList.remove('active');
+        signupTab.setAttribute('aria-selected', 'true');
+        signupTab.tabIndex = 0;
+        loginTab.setAttribute('aria-selected', 'false');
+        loginTab.tabIndex = -1;
+        signupForm.classList.add('active');
+        loginForm.classList.remove('active');
+      }
+    }
+
+    // Event listeners for tabs
+    loginTab.addEventListener('click', () => switchTab('login'));
+    signupTab.addEventListener('click', () => switchTab('signup'));
+
+    // Cancel button resets sign up form and switches back to login
+    cancelSignupBtn.addEventListener('click', () => {
+      signupForm.reset();
+      switchTab('login');
+    });
+
+    // Cancel button resets login form inputs
+    cancelLoginBtn.addEventListener('click', () => {
+      loginForm.reset();
+    });
+
+    // Login form submission handler
+    loginForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      // Basic validation
+      if (!loginForm.checkValidity()) {
+        loginForm.reportValidity();
+        return;
+      }
+      alert(`Logging in:\nName: ${loginForm.loginName.value}`);
+      loginForm.reset();
+    });
+
+    // Sign up form submission handler
+    signupForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      if (!signupForm.checkValidity()) {
+        signupForm.reportValidity();
+        return;
+      }
+      alert(`Signing Up:\nName: ${signupForm.signupName.value}\nDOB: ${signupForm.signupDOB.value}\nFrom: ${signupForm.signupFrom.options[signupForm.signupFrom.selectedIndex].text}\nEmail: ${signupForm.signupEmail.value}`);
+      signupForm.reset();
+      switchTab('login');
+    });
+
+    // Google button click handler
+    googleLoginBtn.addEventListener('click', () => {
+      alert('Google login flow is not implemented in this demo.');
+    });
+
+    // Accessibility: handle keyboard keys Enter or Space on Google button div
+    googleLoginBtn.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        googleLoginBtn.click();
+      }
+    });
+
+  })();
+</script>
+</body>
+</html>

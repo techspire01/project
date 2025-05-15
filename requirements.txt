@@ -1,0 +1,7 @@
+django>=3.2.0
+requests>=2.25.1
+beautifulsoup4>=4.9.3
+nltk>=3.6.2
+channels>=3.0.3
+daphne>=3.0.2
+openai>=1.0.0  # For OpenAI API integration - optional

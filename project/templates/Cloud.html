@@ -1,0 +1,374 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <meta name="description" content="">
+        <meta name="author" content="">
+
+        <title>Cloud Computing</title>
+
+        <!-- CSS FILES -->        
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400&family=Sono:wght@200;300;400;500;700&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+        <link rel="stylesheet" href="{% static 'css/bootstrap-icons.css' %}">
+        <link rel="stylesheet" href="{% static 'css/owl.carousel.min.css' %}">
+        <link rel="stylesheet" href="{% static 'css/owl.theme.default.min.css' %}">
+        <link href="{% static 'css/templatemo-pod-talk.css' %}" rel="stylesheet">
+    </head>
+    
+    <body>
+
+        <main>
+
+            <nav class="navbar navbar-expand-lg">
+                <div class="container">
+                    <a class="navbar-brand me-lg-5 me-0" href="{% url 'index' %}">
+                        <img src="{% static 'images/Education Mania Logo.png' %}" class="logo-image img-fluid" alt="templatemo pod talk">
+                    </a>
+
+                   <form action="{% url 'search' %}" method="get" class="custom-form search-form flex-fill me-3" role="search">
+                        <div class="input-group input-group-lg">    
+                            <input name="search" type="search" class="form-control" id="search" placeholder="Search here" aria-label="Search" autocomplete="off" autocomplete="off" spellcheck="false" autocorrect="off" autocapitalize="off">
+
+                            <button type="submit" class="form-control" id="submit">
+                                <i class="bi-search"></i>
+                            </button>
+                        </div>
+                    </form>
+
+                    <div id="suggestions" class="list-group position-absolute w-100" style="z-index: 1000;"></div>
+
+                    {% if results %}
+                    <div class="search-results-container mt-3 p-3 border rounded bg-light">
+                        <h5>Search Results for "{{ query }}":</h5>
+                        <ul class="list-group">
+                            {% for result in results %}
+                            <li class="list-group-item">
+                                <a href="{{ result.url }}" class="text-decoration-none">
+                                    <strong>{{ result.filename }}</strong>
+                                </a>
+                                <p>{{ result.snippet }}...</p>
+                            </li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                    {% endif %}
+    
+    
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+    
+                    <div class="collapse navbar-collapse" id="navbarNav">
+                        <ul class="navbar-nav ms-lg-auto">
+                            <li class="nav-item">
+                                <a class="nav-link" href="{% url 'index' %}">Home</a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link active" href="{% url 'about' %}">About</a>
+                            </li>
+
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarLightDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">Streams</a>
+
+                                <ul class="dropdown-menu dropdown-menu-light" aria-labelledby="navbarLightDropdownMenuLink">
+                                    <li><a class="dropdown-item" href="{% url 'listing-page' %}">Arts</a></li>
+
+                                    <li><a class="dropdown-item" href="{% url 'detail-page' %}">Engineering</a></li>
+                                </ul>
+                            </li>
+    
+                            <li class="nav-item">
+                                <a class="nav-link" href="{% url 'contact' %}">Contact</a>
+                            </li>
+                        </ul>
+
+                        <div class="ms-4">
+                            <a href="#section_2" class="btn custom-btn custom-border-btn smoothscroll">Get started</a>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+
+
+            <header class="site-header d-flex flex-column justify-content-center align-items-center">
+                <div class="container">
+                    <div class="row">
+
+                        <div class="col-lg-12 col-12 text-center">
+
+                            <h2 class="mb-0">Cloud Computing</h2>
+                        </div>
+
+                    </div>
+                </div>
+            </header>
+            
+
+            <section class="about-section section-padding" id="section_2">
+                <div class="container">
+                    <div class="row">
+
+                        <div class="col-lg-8 col-12 mx-auto">
+                            <div class="pb-5 mb-5">
+                                <div class="section-title-wrap mb-4">
+                                    <h4 class="section-title">Why Cloud Computing in 2025</h4>
+                                </div>
+
+                                <p>Cloud computing is super important in 2025 because it's the backbone of how modern technology runs—think of it as the powerhouse behind all your favorite apps, websites, and even AI models. Instead of buying and maintaining bulky physical servers, companies now use cloud platforms like AWS, Azure, or Google Cloud to store data, run applications, and scale instantly whenever demand spikes. It’s flexible, cost-effective, and super secure, making it perfect for startups, enterprises, and even governments. With the rise of remote work, big data, AI/ML, and IoT, cloud computing allows teams to collaborate in real-time, access powerful computing resources on-demand, and launch global services without worrying about infrastructure. In short, cloud computing makes tech faster, smarter, and more accessible—which is exactly what the world needs in 2025.</p>
+                                <a href="https://www.youtube.com/watch?v=8C_kHJ5YEiA" target="_blank">Click the link to watch why it is Important.</a>
+
+                                <p></p>
+
+                                <img src="{% static 'images/Cloud computing.jpg' %}" class="about-image mt-5 img-fluid" alt="">
+                            </div>
+                        </div>
+
+                        <div class="col-lg-12 col-12">
+                            <div class="section-title-wrap mb-5">
+                             <center>   <h4 class="section-title">Core Responible's</h4>  </center>
+                            </div>
+                        </div>
+                        <center>
+                        <div class="col-lg-3 col-md-6 col-12 mb-4 mb-lg-0">
+                            <div class="team-thumb bg-white shadow-lg">
+                                <img src="{% static 'images/profile/cute-smiling-woman-outdoor-portrait.jpg' %}" class="about-image img-fluid" alt="">
+
+                                <div class="team-info">
+                                    <h4 class="mb-2">
+                                        Taylor
+                                        <img src="{% static 'images/verified.png' %}" class="verified-image img-fluid" alt="">
+                                        
+                                    </h4>
+
+                                    <span class="badge">Data Analyst</span>
+
+                                    <span class="badge">Arts Stream</span>
+                                    
+
+                                </div>
+
+                                <div class="social-share">
+                                        <ul class="social-icon">
+                                            <li class="social-icon-item">
+                                                <a href="#" class="social-icon-link bi-twitter"></a>
+                                            </li>
+
+                                            <li class="social-icon-item">
+                                                <a href="#" class="social-icon-link bi-facebook"></a>
+                                            </li>
+
+                                            <li class="social-icon-item">
+                                                <a href="#" class="social-icon-link bi-pinterest"></a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                            </div>
+                        </div>
+                        </center>
+
+                        <div class="col-lg-8 col-12 mx-auto">
+                            <div class="pb-5 mb-5">
+                                <div class="section-title-wrap mb-4">
+                                    <h4 class="section-title">Roadmap</h4>
+                                </div>
+
+                                <p>🔹 Phase 1: Understand the Basics (Week 1)
+                                    Learn what cloud computing is: IaaS, PaaS, SaaS
+                                    
+                                    Explore the 3 main providers: AWS, Microsoft Azure, and Google Cloud Platform (GCP)
+                                    
+                                    Understand key concepts like regions, zones, VMs, storage, and scalability
+                                    
+                                    🔹 Phase 2: Pick a Cloud Provider (Week 2–3)
+                                    Most people start with AWS (biggest market share), but Azure and GCP are also 💯.
+                                    Start with:
+                                    
+                                    AWS Certified Cloud Practitioner or Azure Fundamentals (AZ-900)
+                                    
+                                    Learn about:
+                                    
+                                    EC2 (virtual machines)
+                                    
+                                    S3 (cloud storage)
+                                    
+                                    IAM (identity & access management)
+                                    
+                                    VPC (virtual networks)
+                                    
+                                    🔹 Phase 3: Hands-On Practice (Week 4–5)
+                                    Set up a free tier account on AWS, Azure, or GCP
+                                    
+                                    Launch your first EC2 VM, upload files to S3, and host a static website
+                                    
+                                    Use the console, then try doing the same with CLI (Command Line Interface)
+                                    
+                                    🔹 Phase 4: Learn DevOps + Cloud Tools (Week 6–7)
+                                    Start using Docker, Git, Jenkins, and Terraform
+                                    
+                                    Learn about CI/CD pipelines and how they’re integrated into cloud workflows
+                                    
+                                    Try deploying a full-stack app using Elastic Beanstalk or Azure App Service
+                                    
+                                    🔹 Phase 5: Advance to Serverless & Security (Week 8)
+                                    Dive into Serverless computing (AWS Lambda, Azure Functions)
+                                    
+                                    Learn about cloud security best practices, encryption, and compliance (like GDPR)
+                                    
+                                    🔹 Phase 6: Real-World Projects & Certification (Week 9–10)
+                                    Projects like:
+                                    
+                                    Host a portfolio site on the cloud
+                                    
+                                    Build a serverless API
+                                    
+                                    Create a cloud-based data pipeline
+                                    
+                                    Start preparing for certifications like:
+                                    
+                                    AWS Solutions Architect Associate
+                                    
+                                    Azure Administrator Associate
+                                    
+                                    Google Associate Cloud Engineer</p>
+                                <a href="https://www.youtube.com/watch?v=0HyIda5eub8" target="_blank">Click the link to Watch the Roadmap</a>
+
+                                <p></p>
+
+                                <img src="{% static 'images/cc Roadmap.jpg' %}" class="about-image mt-5 img-fluid" alt="">
+                            </div>
+                        </div>
+
+                        <div class="col-lg-8 col-12 mx-auto">
+                            <div class="pb-5 mb-5">
+                                <div class="section-title-wrap mb-4">
+                                    <h4 class="section-title">Books to Learn</h4>
+                                </div>
+
+                                <p>If you're serious about learning Cloud Computing in 2025, there are some absolute must-read books that’ll help you get both the fundamentals and real-world skills down. Start with “Cloud Computing: Concepts, Technology & Architecture” by Thomas Erl—this one's a classic that breaks down the why and how of cloud in a very structured, easy-to-understand way. Next, if you're leaning toward AWS, grab “Amazon Web Services in Action” by Michael Wittig and Andreas Wittig—it's super hands-on and teaches you how to build in the cloud using real examples. For those going the Azure route, “Exam Ref AZ-900 Microsoft Azure Fundamentals” by Jim Cheshire is gold—it not only helps you pass the cert but also builds your cloud thinking. Want something that touches on multi-cloud, DevOps, and infrastructure as code? Check out “Cloud Native DevOps with Kubernetes” by John Arundel and Justin Domingus—perfect for modern cloud engineers. And if you’re more into GCP, “Google Cloud Platform for Architects” by Vitthal Srinivasan is a practical guide full of architecture blueprints and deployment strategies. These books will give you both the technical chops and the cloud mindset to crush it in 2025.</p>
+                                <a href="https://medium.com/@jake.page91/10-essential-books-to-accelerate-your-cloud-career-f43f33d5e859" target="_blank">Click the link to Watch the Blog.</a>
+
+                                <p></p>
+
+                                <img src="{% static 'images/books for DA.jpg' %}" class="about-image mt-5 img-fluid" alt="">
+                            </div>
+                        </div>
+
+
+                        
+                  
+                    
+        </main>
+        </center>
+
+
+        <footer class="site-footer">   
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-6 col-12 mb-5 mb-lg-0">
+                        <div class="subscribe-form-wrap">
+                            <h6>Subscribe. Every weekly.</h6>
+                            <form id="subscribeForm" class="custom-form subscribe-form" role="form">
+                                <input type="email" name="subscribe-email" id="subscriberEmail" class="form-control" placeholder="Email Address" required>
+                                <div class="col-lg-12 col-12">
+                                    <button type="submit" class="form-control" id="submit">Subscribe</button>
+                                </div>
+                            </form>
+                            <script>
+                                document.getElementById('subscribeForm').addEventListener('submit', function(e) {
+                                    e.preventDefault();
+                                    const email = document.getElementById('subscriberEmail').value;
+                                    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                                    if (email && emailRegex.test(email)) {
+                                        fetch('/api/subscribe/', {
+                                            method: 'POST',
+                                            headers: { 'Content-Type': 'application/json' },
+                                            body: JSON.stringify({ email: email })
+                                        })
+                                        .then(response => response.json())
+                                        .then(data => {
+                                            if (data.message === 'Successfully subscribed') {
+                                                alert('✅ Successfully subscribed!');
+                                                document.getElementById('subscriberEmail').value = '';
+                                            } else if (data.error) {
+                                                alert('❌ Error: ' + data.error);
+                                            } else {
+                                                alert('❌ Error: Unexpected response from the server.');
+                                            }
+                                        })
+                                        .catch(() => {
+                                            alert('❌ Error: Something went wrong.');
+                                        });
+                                    } else {
+                                        alert("⚠️ Please enter a valid email address.");
+                                    }
+                                });
+                            </script>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6 col-12 mb-4 mb-md-0 mb-lg-0">
+                        <h6 class="site-footer-title mb-3">Contact</h6>
+                        <p class="mb-2"><strong class="d-inline me-2">Phone:</strong> 010-020-0340</p>
+                        <p><strong class="d-inline me-2">Email:</strong><a href="#">educationmania@gmail.com</a></p>
+                    </div>
+                    <div class="col-lg-3 col-md-6 col-12">
+                        <h6 class="site-footer-title mb-3">Download Mobile</h6>
+                        <div class="site-footer-thumb mb-4 pb-2">
+                            <div class="d-flex flex-wrap">
+                                <a href="#"><img src="{% static 'images/app-store.png' %}" class="me-3 mb-2 mb-lg-0 img-fluid" alt=""></a>
+                                <a href="#"><img src="{% static 'images/play-store.png' %}" class="img-fluid" alt=""></a>
+                            </div>
+                        </div>
+                        <h6 class="site-footer-title mb-3">conect through Social</h6>
+                        <ul class="social-icon">
+                            <li class="social-icon-item">
+                                <a href="#" class="social-icon-link bi-instagram">
+                                    <link rel="stylesheet" href="https://www.instagram.com/">
+                                </a>
+                            </li>
+                            <li class="social-icon-item">
+                                <a href="#" class="social-icon-link bi-twitter"></a>
+                            </li>
+                            <li class="social-icon-item">
+                                <a href="#" class="social-icon-link bi-whatsapp"></a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="container pt-5">
+                <div class="row align-items-center">
+                    <div class="col-lg-2 col-md-3 col-12">
+                        <a class="navbar-brand" href="{% url 'index' %}">
+                            <img src="{% static 'images/Education Mania Logo.png' %}" class="logo-image img-fluid" alt="templatemo pod talk">
+                        </a>
+                    </div>
+                    <div class="col-lg-7 col-md-9 col-12">
+                        <ul class="site-footer-links">
+                            <li class="site-footer-link-item"><a href="#" class="site-footer-link">Homepage</a></li>
+                            <li class="site-footer-link-item"><a href="#" class="site-footer-link">Browse episodes</a></li>
+                            <li class="site-footer-link-item"><a href="#" class="site-footer-link">Help Center</a></li>
+                            <li class="site-footer-link-item"><a href="#" class="site-footer-link">Contact Us</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-lg-3 col-12">
+                        <p class="copyright-text mb-0">Copyright © 2025 Education Mania. All Rights Reserved<br><br></p>
+                    </div>
+                </div>
+            </div>
+        </footer>
+
+        <!-- JAVASCRIPT FILES -->
+        <script src="{% static 'js/jquery.min.js' %}"></script>
+        <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
+        <script src="{% static 'js/owl.carousel.min.js' %}"></script>
+        <script src="{% static 'js/custom.js' %}"></script>
+
+    </body>
+</html>

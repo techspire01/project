@@ -1,0 +1,356 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <meta name="description" content="">
+        <meta name="author" content="">
+
+        <title>B.E EEE</title>
+
+        <!-- CSS FILES -->        
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400&family=Sono:wght@200;300;400;500;700&display=swap" rel="stylesheet">
+                        
+        <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+
+        <link rel="stylesheet" href="{% static 'css/bootstrap-icons.css' %}">
+
+        <link rel="stylesheet" href="{% static 'css/owl.carousel.min.css' %}">
+        
+        <link rel="stylesheet" href="{% static 'css/owl.theme.default.min.css' %}">
+
+        <link href="{% static 'css/templatemo-pod-talk.css' %}" rel="stylesheet">
+
+    </head>
+    
+    <body>
+
+        <main>
+
+            <nav class="navbar navbar-expand-lg">
+                <div class="container">
+                    <a class="navbar-brand me-lg-5 me-0" href="{% url 'index' %}">
+                        <img src="{% static 'images/Education Mania Logo.png' %}" class="logo-image img-fluid" alt="templatemo pod talk">
+                    </a>
+
+                   <form action="{% url 'search' %}" method="get" class="custom-form search-form flex-fill me-3" role="search">
+                        <div class="input-group input-group-lg">    
+                            <input name="search" type="search" class="form-control" id="search" placeholder="Search here" aria-label="Search" autocomplete="off" autocomplete="off" spellcheck="false" autocorrect="off" autocapitalize="off">
+
+                            <button type="submit" class="form-control" id="submit">
+                                <i class="bi-search"></i>
+                            </button>
+                        </div>
+                    </form>
+
+                    <div id="suggestions" class="list-group position-absolute w-100" style="z-index: 1000;"></div>
+
+                    {% if results %}
+                    <div class="search-results-container mt-3 p-3 border rounded bg-light">
+                        <h5>Search Results for "{{ query }}":</h5>
+                        <ul class="list-group">
+                            {% for result in results %}
+                            <li class="list-group-item">
+                                <a href="{{ result.url }}" class="text-decoration-none">
+                                    <strong>{{ result.filename }}</strong>
+                                </a>
+                                <p>{{ result.snippet }}...</p>
+                            </li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                    {% endif %}
+    
+    
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+    
+                    <div class="collapse navbar-collapse" id="navbarNav">
+                        <ul class="navbar-nav ms-lg-auto">
+                            <li class="nav-item">
+                                <a class="nav-link" href="{% url 'index' %}">Home</a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link active" href="{% url 'about' %}">About</a>
+                            </li>
+
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarLightDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">Streams</a>
+
+                                <ul class="dropdown-menu dropdown-menu-light" aria-labelledby="navbarLightDropdownMenuLink">
+                                    <li><a class="dropdown-item" href="{% url 'listing-page' %}">Arts</a></li>
+
+                                    <li><a class="dropdown-item" href="{% url 'detail-page' %}">Engineering</a></li>
+                                </ul>
+                            </li>
+    
+                            <li class="nav-item">
+                                <a class="nav-link" href="{% url 'contact' %}">Contact</a>
+                            </li>
+                        </ul>
+
+                        <div class="ms-4">
+                            <a href="#section_2" class="btn custom-btn custom-border-btn smoothscroll">Get started</a>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+
+
+            <header class="site-header d-flex flex-column justify-content-center align-items-center">
+                <div class="container">
+                    <div class="row">
+
+                        <div class="col-lg-12 col-12 text-center">
+
+                            <h2 class="mb-0">BE in Electrical and Electronic Engineering</h2>
+                        </div>
+
+                    </div>
+                </div>
+            </header>
+            
+
+            <section class="about-section section-padding" id="section_2">
+                <div class="container">
+                    <div class="row">
+
+                        <div class="col-lg-8 col-12 mx-auto">
+                            <div class="pb-5 mb-5">
+                                <div class="section-title-wrap mb-4">
+                                    <h4 class="section-title">Why  EEE min 2025</h4>
+                                </div>
+
+                                <p>In 2025, EEE (Electrical and Electronics Engineering) is more relevant than ever as the world goes full throttle into smart technology, renewable energy, and automation. From electric vehicles and IoT-enabled devices to smart grids and sustainable power systems, EEE engineers are powering the future—literally. As industries shift toward eco-friendly solutions and smarter infrastructure, the demand for experts who understand both heavy electrical systems and micro-level electronics is booming. Whether it’s designing energy-efficient circuits, working on robotics, or contributing to the rise of solar and wind power, EEE opens doors in both core industries and high-tech startups. With AI and embedded systems getting into everything—from wearables to home automation—EEE in 2025 isn’t just about wires and motors, it’s about innovation that lights up the modern world.
+
+                                </p>
+                                <a href="https://www.youtube.com/watch?v=97ygrzTYuP8" target="_blank">Click the link to watch why it is Important.</a>
+
+                                <p></p>
+
+                                <img src="{% static 'images/Computer for arts.png' %}" class="about-image mt-5 img-fluid" alt="">
+                            </div>
+                        </div>
+
+                        <div class="col-lg-12 col-12">
+                            <div class="section-title-wrap mb-5">
+                             <center>   <h4 class="section-title">Core Responible's</h4>  </center>
+                            </div>
+                        </div>
+                        <center>
+                        <div class="col-lg-3 col-md-6 col-12 mb-4 mb-lg-0">
+                            <div class="team-thumb bg-white shadow-lg">
+                                <img src="{% static 'images/profile/cute-smiling-woman-outdoor-portrait.jpg' %}" class="about-image img-fluid" alt="">
+
+                                <div class="team-info">
+                                    <h4 class="mb-2">
+                                        Taylor
+                                        <img src="{% static 'images/verified.png' %}" class="verified-image img-fluid" alt="">
+                                        
+                                    </h4>
+
+                                    <span class="badge">Data Analyst</span>
+
+                                    <span class="badge">Arts Stream</span>
+                                    
+
+                                </div>
+
+                                <div class="social-share">
+                                        <ul class="social-icon">
+                                            <li class="social-icon-item">
+                                                <a href="#" class="social-icon-link bi-twitter"></a>
+                                            </li>
+
+                                            <li class="social-icon-item">
+                                                <a href="#" class="social-icon-link bi-facebook"></a>
+                                            </li>
+
+                                            <li class="social-icon-item">
+                                                <a href="#" class="social-icon-link bi-pinterest"></a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                            </div>
+                        </div>
+                        </center>
+
+                        <div class="col-lg-8 col-12 mx-auto">
+                            <div class="pb-5 mb-5">
+                                <div class="section-title-wrap mb-4">
+                                    <h4 class="section-title">Roadmap</h4>
+                                </div>
+
+                                <p>The EEE journey begins in the first year, where the focus is on building your technical foundation. You’ll study Engineering Mathematics, Physics, Basic Electrical Engineering, and learn how currents, voltages, and power systems work. Alongside, you’ll get a taste of programming—usually C or Python—since EEE today blends both hardware and software. It’s the year to get comfortable with circuit basics, lab work, and logical problem-solving. You'll also start using simulation tools like Multisim or Proteus to visualize circuit behavior.
+
+                                    In the second year, things get real. You’ll dive into core EEE subjects like Electrical Machines, Analog Electronics, Network Theory, and Electromagnetic Fields. At the same time, microcontrollers and digital electronics will start coming into play—this is where electronics meets logic design. You'll also begin working with software like MATLAB, PSIM, or PSpice. Side note: this is the perfect time to start building small DIY electronics projects (think: home automation, line followers, LED blinkers). You’ll also benefit from learning basic Arduino and Raspberry Pi coding, because embedded systems are the backbone of modern EEE.
+                                    
+                                    By the third year, you're ready to specialize. You'll tackle more complex topics like Power Systems, Control Systems, Power Electronics, and Instrumentation. You’ll also work on mini projects that involve motor control, automation, and real-time systems. If you're leaning toward embedded systems or robotics, it's smart to learn C for microcontrollers or even jump into IoT development. If you're interested in the power sector, start exploring renewable energy systems, smart grid technologies, and tools like ETAP. Also, this is the time to start internships—whether in core industries like BHEL, TNEB, or startups working on EVs, automation, or solar energy systems.
+                                    
+                                    In your fourth year, you’re prepping to enter the industry or higher studies. You’ll work on your final year project—go big here: maybe a smart energy meter, solar tracking system, EV charging station, or an automation-based home control system. You’ll also dive into placement prep, focusing on both core questions (transformers, motors, power systems) and aptitude. If you’re eyeing software roles, continue improving your coding and DSA on LeetCode or GFG. For core EEE jobs, start applying to PSU exams (like GATE), or company-specific tests for industries like L&T, Siemens, or ABB. Certifications in PLC/SCADA, MATLAB, or IoT will give you that extra shine.</p>
+                                    <a href="https://www.youtube.com/watch?v=sndwSZLRqiE" target="_blank">Click the link to Watch the Video.
+                                    <div class="pb-5 mb-5">
+                                <div class="section-title-wrap mb-4">
+                                    <h4 class="section-title">Books to Learn</h4>
+                                </div>
+
+                                <p>First Year (Foundation)
+                                    Basic Electrical Engineering – “Basic Electrical Engineering” by V.K. Mehta & Rohit Mehta (Super beginner-friendly. Gold standard for understanding current, voltage, circuits.)
+                                    
+                                    Engineering Mathematics – B.S. Grewal (A must-have. Helps you crack the math behind everything in EEE.)
+                                    
+                                    Physics (Electromagnetism Focus) – H.C. Verma Vol 2 or Resnick & Halliday (Very helpful in clearing concepts related to EM fields.)
+                                    
+                                    ⚙️ Second Year (Core Concepts Begin)
+                                    Electrical Machines – “Electrical Machinery” by P.S. Bimbhra or Fitzgerald & Kingsley (Top-tier for Transformers, Motors, Generators.)
+                                    
+                                    Network Analysis – “Network Analysis” by Van Valkenburg (Legendary book—if you get this, you’ll own circuit theory.)
+                                    
+                                    Analog Electronics – “Electronic Devices and Circuit Theory” by Boylestad & Nashelsky (Great for BJT, FET, Diodes.)
+                                    
+                                    Digital Electronics – “Digital Logic and Computer Design” by M. Morris Mano (Every EEE student’s Bible for digital systems.)
+                                    
+                                    ⚡ Third Year (Heavyweight Zone)
+                                    Power Systems – “Power System Engineering” by Nagrath & Kothari (Clear diagrams, explains loads, transmission, and generation.)
+                                    
+                                    Control Systems – “Control Systems Engineering” by Nise or A. Anand Kumar (If you vibe with feedback systems and automation, this book will be your fav.)
+                                    
+                                    Power Electronics – “Power Electronics” by M.D. Singh & K.B. Khanchandani (Comprehensive coverage of inverters, rectifiers, and converters.)
+                                    
+                                    Microprocessors & Microcontrollers – “The 8051 Microcontroller and Embedded Systems” by Mazidi (Absolute gem for embedded systems.)
+                                    
+                                    🔌 Fourth Year (Projects + Industry Prep)
+                                    Electrical Instrumentation – “Principles of Measurement and Instrumentation” by Alan S. Morris or H.S. Kalsi
+                                    
+                                    Renewable Energy Systems – “Non-Conventional Energy Resources” by B.H. Khan (If you're getting into solar, wind, EVs—this is a neat intro.)
+                                    
+                                    PLC & SCADA (Optional) – “Programmable Logic Controllers” by Frank D. Petruzella (Super useful if you're entering automation/control.)</p>
+                                <a href="https://www.goodreads.com/shelf/show/eee" target="_blank">Click the link to Watch the Blog.</a>
+
+                                <p></p>
+
+                                <img src="{% static 'images/It books.jpg' %}" class="about-image mt-5 img-fluid" alt="">
+                            </div>
+                        </div>
+
+
+                        
+                  
+
+        </main>
+        </center>
+
+
+        <footer class="site-footer">   
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-6 col-12 mb-5 mb-lg-0">
+                        <div class="subscribe-form-wrap">
+                            <h6>Subscribe. Every weekly.</h6>
+                            <form id="subscribeForm" class="custom-form subscribe-form" role="form">
+                                <input type="email" name="subscribe-email" id="subscriberEmail" class="form-control" placeholder="Email Address" required>
+                                <div class="col-lg-12 col-12">
+                                    <button type="submit" class="form-control" id="submit">Subscribe</button>
+                                </div>
+                            </form>
+                            <script>
+                                document.getElementById('subscribeForm').addEventListener('submit', function(e) {
+                                    e.preventDefault();
+                                    const email = document.getElementById('subscriberEmail').value;
+                                    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                                    if (email && emailRegex.test(email)) {
+                                        fetch('/api/subscribe/', {
+                                            method: 'POST',
+                                            headers: { 'Content-Type': 'application/json' },
+                                            body: JSON.stringify({ email: email })
+                                        })
+                                        .then(response => response.json())
+                                        .then(data => {
+                                            if (data.message === 'Successfully subscribed') {
+                                                alert('✅ Successfully subscribed!');
+                                                document.getElementById('subscriberEmail').value = '';
+                                            } else if (data.error) {
+                                                alert('❌ Error: ' + data.error);
+                                            } else {
+                                                alert('❌ Error: Unexpected response from the server.');
+                                            }
+                                        })
+                                        .catch(() => {
+                                            alert('❌ Error: Something went wrong.');
+                                        });
+                                    } else {
+                                        alert("⚠️ Please enter a valid email address.");
+                                    }
+                                });
+                            </script>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6 col-12 mb-4 mb-md-0 mb-lg-0">
+                        <h6 class="site-footer-title mb-3">Contact</h6>
+                        <p class="mb-2"><strong class="d-inline me-2">Phone:</strong> 010-020-0340</p>
+                        <p><strong class="d-inline me-2">Email:</strong><a href="#">educationmania@gmail.com</a></p>
+                    </div>
+                    <div class="col-lg-3 col-md-6 col-12">
+                        <h6 class="site-footer-title mb-3">Download Mobile</h6>
+                        <div class="site-footer-thumb mb-4 pb-2">
+                            <div class="d-flex flex-wrap">
+                                <a href="#"><img src="{% static 'images/app-store.png' %}" class="me-3 mb-2 mb-lg-0 img-fluid" alt=""></a>
+                                <a href="#"><img src="{% static 'images/play-store.png' %}" class="img-fluid" alt=""></a>
+                            </div>
+                        </div>
+                        <h6 class="site-footer-title mb-3">conect through Social</h6>
+                        <ul class="social-icon">
+                            <li class="social-icon-item">
+                                <a href="#" class="social-icon-link bi-instagram">
+                                    <link rel="stylesheet" href="https://www.instagram.com/">
+                                </a>
+                            </li>
+                            <li class="social-icon-item">
+                                <a href="#" class="social-icon-link bi-twitter"></a>
+                            </li>
+                            <li class="social-icon-item">
+                                <a href="#" class="social-icon-link bi-whatsapp"></a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="container pt-5">
+                <div class="row align-items-center">
+                    <div class="col-lg-2 col-md-3 col-12">
+                        <a class="navbar-brand" href="{% url 'index' %}"></a>
+                            <img src="{% static 'images/Education Mania Logo.png' %}" class="logo-image img-fluid" alt="templatemo pod talk">
+                        </a>
+                    </div>
+                    <div class="col-lg-7 col-md-9 col-12"></div>
+                        <ul class="site-footer-links">
+                            <li class="site-footer-link-item"><a href="#" class="site-footer-link">Homepage</a></li>
+                            <li class="site-footer-link-item"><a href="#" class="site-footer-link">Browse episodes</a></li>
+                            <li class="site-footer-link-item"><a href="#" class="site-footer-link">Help Center</a></li>
+                            <li class="site-footer-link-item"><a href="#" class="site-footer-link">Contact Us</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-lg-3 col-12">
+                        <p class="copyright-text mb-0">Copyright © 2025 Education Mania. All Rights Reserved<br><br></p>
+                    </div>
+                </div>
+            </div>
+        </footer>
+
+
+        <!-- JAVASCRIPT FILES -->
+        <script src="{% static 'js/jquery.min.js' %}"></script>
+        <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
+        <script src="{% static 'js/owl.carousel.min.js' %}"></script>
+        <script src="{% static 'js/custom.js' %}"></script>
+
+    </body>
+</html>

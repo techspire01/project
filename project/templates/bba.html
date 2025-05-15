@@ -1,0 +1,334 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <meta name="description" content="">
+        <meta name="author" content="">
+
+        <title>BBA</title>
+
+        <!-- CSS FILES -->        
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400&family=Sono:wght@200;300;400;500;700&display=swap" rel="stylesheet">
+                        
+        <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+
+        <link rel="stylesheet" href="{% static 'css/bootstrap-icons.css' %}">
+
+        <link rel="stylesheet" href="{% static 'css/owl.carousel.min.css' %}">
+        
+        <link rel="stylesheet" href="{% static 'css/owl.theme.default.min.css' %}">
+
+        <link href="{% static 'css/templatemo-pod-talk.css' %}" rel="stylesheet">
+<!--
+
+TemplateMo 584 Pod Talk
+
+https://templatemo.com/tm-584-pod-talk
+
+-->
+    </head>
+    
+    <body>
+
+        <main>
+
+            <nav class="navbar navbar-expand-lg">
+                <div class="container">
+                    <a class="navbar-brand me-lg-5 me-0" href="{% url 'index' %}">
+                        <img src="{% static 'images/Education Mania Logo.png' %}" class="logo-image img-fluid" alt="templatemo pod talk">
+                    </a>
+
+                    <form action="{% url 'search' %}" method="get" class="custom-form search-form flex-fill me-3" role="search">
+                        <div class="input-group input-group-lg">    
+                            <input name="search" type="search" class="form-control" id="search" placeholder="Search here" aria-label="Search" autocomplete="off" autocomplete="off" spellcheck="false" autocorrect="off" autocapitalize="off">
+
+                            <button type="submit" class="form-control" id="submit">
+                                <i class="bi-search"></i>
+                            </button>
+                        </div>
+                    </form>
+
+                    <div id="suggestions" class="list-group position-absolute w-100" style="z-index: 1000;"></div>
+
+                    {% if results %}
+                    <div class="search-results-container mt-3 p-3 border rounded bg-light">
+                        <h5>Search Results for "{{ query }}":</h5>
+                        <ul class="list-group">
+                            {% for result in results %}
+                            <li class="list-group-item">
+                                <a href="{{ result.url }}" class="text-decoration-none">
+                                    <strong>{{ result.filename }}</strong>
+                                </a>
+                                <p>{{ result.snippet }}...</p>
+                            </li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                    {% endif %}
+    
+    
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+    
+                    <div class="collapse navbar-collapse" id="navbarNav">
+                        <ul class="navbar-nav ms-lg-auto">
+                            <li class="nav-item">
+                                <a class="nav-link" href="{% url 'index' %}">Home</a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link active" href="{% url 'about' %}">About</a>
+                            </li>
+
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarLightDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">Streams</a>
+
+                                <ul class="dropdown-menu dropdown-menu-light" aria-labelledby="navbarLightDropdownMenuLink">
+                                    <li><a class="dropdown-item" href="{% url 'listing-page' %}">Arts</a></li>
+
+                                    <li><a class="dropdown-item" href="{% url 'detail-page' %}">Engineering</a></li>
+                                </ul>
+                            </li>
+    
+                            <li class="nav-item">
+                                <a class="nav-link" href="{% url 'contact' %}">Contact</a>
+                            </li>
+                        </ul>
+
+                        <div class="ms-4">
+                            <a href="#section_2" class="btn custom-btn custom-border-btn smoothscroll">Get started</a>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+
+
+            <header class="site-header d-flex flex-column justify-content-center align-items-center">
+                <div class="container">
+                    <div class="row">
+
+                        <div class="col-lg-12 col-12 text-center">
+
+                            <h2 class="mb-0">BBA</h2>
+                        </div>
+
+                    </div>
+                </div>
+            </header>
+            
+
+            <section class="about-section section-padding" id="section_2">
+                <div class="container">
+                    <div class="row">
+
+                        <div class="col-lg-8 col-12 mx-auto">
+                            <div class="pb-5 mb-5">
+                                <div class="section-title-wrap mb-4">
+                                    <h4 class="section-title">Why BBA in 2025</h4>
+                                </div>
+
+                                <p>In 2025, BBA stands out as one of the most strategic and future-relevant undergraduate degrees because it prepares students with a strong blend of business knowledge, managerial skills, and real-world adaptability. As industries across the globe continue to evolve with digital transformation, companies are actively seeking professionals who can understand business operations, interpret market trends, lead teams, and adapt to innovation. A BBA degree offers a deep understanding of areas like marketing, finance, human resources, operations, and entrepreneurship, while also integrating modern tools such as data analytics, digital marketing, and business communication. This makes BBA graduates not just job-ready, but leadership-ready. Moreover, it acts as a gateway to higher studies like MBA, or specialized fields such as data science, international business, or business analytics. With startups booming and corporate culture shifting toward strategic thinking and digital-first approaches, BBA students in 2025 are being trained not only to fit into the business world but to lead, innovate, and build it. Whether you want to become an entrepreneur, business consultant, or manager in a top company, BBA provides the mindset and skillset to make it happen.
+
+                                </p>
+                                <a href="https://www.youtube.com/watch?v=xaPFtrXRUWE&t=11s" target="_blank">Click the Link to Know About BBA</a>
+
+                                <p></p>
+
+                                <img src="{% static 'images/BBA.jpg' %}" class="about-image mt-5 img-fluid" alt="">
+                            </div>
+                        </div>
+
+                        <div class="col-lg-12 col-12">
+                            <div class="section-title-wrap mb-5">
+                             <center>   <h4 class="section-title">Core Responible's</h4>  </center>
+                            </div>
+                        </div>
+                        <center>
+                        <div class="col-lg-3 col-md-6 col-12 mb-4 mb-lg-0">
+                            <div class="team-thumb bg-white shadow-lg">
+                                <img src="{% static 'images/profile/cute-smiling-woman-outdoor-portrait.jpg' %}" class="about-image img-fluid" alt="">
+
+                                <div class="team-info">
+                                    <h4 class="mb-2">
+                                        Taylor
+                                        <img src="{% static 'images/verified.png' %}" class="verified-image img-fluid" alt="">
+                                        
+                                    </h4>
+
+                                    <span class="badge">Data Analyst</span>
+
+                                    <span class="badge">Arts Stream</span>
+                                    
+
+                                </div>
+
+                                <div class="social-share">
+                                        <ul class="social-icon">
+                                            <li class="social-icon-item">
+                                                <a href="#" class="social-icon-link bi-twitter"></a>
+                                            </li>
+
+                                            <li class="social-icon-item">
+                                                <a href="#" class="social-icon-link bi-facebook"></a>
+                                            </li>
+
+                                            <li class="social-icon-item">
+                                                <a href="#" class="social-icon-link bi-pinterest"></a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                            </div>
+                        </div>
+                        </center>
+
+                        <div class="col-lg-8 col-12 mx-auto">
+                            <div class="pb-5 mb-5">
+                                <div class="section-title-wrap mb-4">
+                                    <h4 class="section-title">Roadmap</h4>
+                                </div>
+
+                                <p>In the first year of BBA, students should focus on building a strong foundation in subjects like Principles of Management, Business Economics, Financial Accounting, and Business Communication. This is the time to develop an understanding of how businesses operate and sharpen soft skills like public speaking, writing, and teamwork. Alongside academics, students should start using tools like MS Excel and practice making basic presentations using PowerPoint. Moving into the second year, the focus shifts to more applied learning through subjects like Marketing Management, Human Resource Management, Business Law, Organizational Behavior, and Business Statistics. This is also the right time to take up certifications in Digital Marketing, Excel, or Business Analytics using platforms like Coursera, Google, or LinkedIn Learning. During this year, participating in internships, college events, and group projects is super valuable for gaining real-world exposure. In the final year, students dive into Strategic Management, Financial Management, Operations, Entrepreneurship Development, and International Business. This is also when you should start preparing for higher studies like MBA, or job roles in sales, HR, operations, finance, or marketing. Building a strong portfolio, LinkedIn profile, and doing a final year project or internship based on your area of interest will boost your chances of landing a solid job after graduation. Throughout the 3 years, it’s important to stay updated with business news, improve communication, and work on leadership skills to truly become industry-ready.</p>
+                                <a href="https://www.youtube.com/watch?v=NP2dPNIrFiM" target="_blank">Click the link to Watch the Roadmap</a>
+
+                                <p></p>
+
+                                <img src="{% static 'images/roadmap for BBA.jpg' %}" class="about-image mt-5 img-fluid" alt="">
+                            </div>
+                        </div>
+
+                        <div class="col-lg-8 col-12 mx-auto">
+                            <div class="pb-5 mb-5">
+                                <div class="section-title-wrap mb-4">
+                                    <h4 class="section-title">Books to Learn</h4>
+                                </div>
+
+                                <p>To truly thrive in a BBA program, students should rely on a blend of classic textbooks and practical resources. For Principles of Management, Harold Koontz & Heinz Weihrich’s “Essentials of Management” is a must-read, known for its simple language and real-world business examples. For Business Economics, D.M. Mithani and Sankaran’s books are solid choices that balance theory with application. T.S. Grewal’s Accounting books remain gold for Financial Accounting, while Khan & Jain’s “Financial Management” is ideal for grasping core financial concepts in the later semesters. For Marketing, Philip Kotler’s “Principles of Marketing” is a legendary book that every BBA student should go through—it offers global insights and strategy breakdowns. In the HR domain, C.B. Gupta’s “Human Resource Management” is beginner-friendly and widely used in colleges. For Organizational Behavior, Stephen P. Robbins’ book is an excellent read for understanding how individuals and teams function within companies. Students should also explore “Business Law” by N.D. Kapoor for legal basics, and “Business Statistics” by S.C. Gupta to master numbers and analysis. To stay updated and improve communication skills, regular reading of business newspapers, journals, and business magazines like Business Today or Harvard Business Review is highly recommended. Using these books alongside practical projects, internships, and certifications will prepare BBA students for a successful corporate career or higher studies.</p>
+                                <a href="https://www.quora.com/Which-books-are-best-for-BBA-1st-sem-1st-yr" target="_blank">Click the link to Watch the Blog.</a>
+
+                                <p></p>
+
+                                <img src="{% static 'images/Books of BBA.jpg' %}" class="about-image mt-5 img-fluid" alt="">
+                            </div>
+                        </div>
+
+
+                        
+                  
+                    
+        </main>
+        </center>
+
+
+        <footer class="site-footer">   
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-6 col-12 mb-5 mb-lg-0">
+                        <div class="subscribe-form-wrap">
+                            <h6>Subscribe. Every weekly.</h6>
+                            <form id="subscribeForm" class="custom-form subscribe-form" role="form">
+                                <input type="email" name="subscribe-email" id="subscriberEmail" class="form-control" placeholder="Email Address" required>
+                                <div class="col-lg-12 col-12">
+                                    <button type="submit" class="form-control" id="submit">Subscribe</button>
+                                </div>
+                            </form>
+                            <script>
+                                document.getElementById('subscribeForm').addEventListener('submit', function(e) {
+                                    e.preventDefault();
+                                    const email = document.getElementById('subscriberEmail').value;
+                                    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                                    if (email && emailRegex.test(email)) {
+                                        fetch('/api/subscribe/', {
+                                            method: 'POST',
+                                            headers: { 'Content-Type': 'application/json' },
+                                            body: JSON.stringify({ email: email })
+                                        })
+                                        .then(response => response.json())
+                                        .then(data => {
+                                            if (data.message === 'Successfully subscribed') {
+                                                alert('✅ Successfully subscribed!');
+                                                document.getElementById('subscriberEmail').value = '';
+                                            } else if (data.error) {
+                                                alert('❌ Error: ' + data.error);
+                                            } else {
+                                                alert('❌ Error: Unexpected response from the server.');
+                                            }
+                                        })
+                                        .catch(() => {
+                                            alert('❌ Error: Something went wrong.');
+                                        });
+                                    } else {
+                                        alert("⚠️ Please enter a valid email address.");
+                                    }
+                                });
+                            </script>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6 col-12 mb-4 mb-md-0 mb-lg-0">
+                        <h6 class="site-footer-title mb-3">Contact</h6>
+                        <p class="mb-2"><strong class="d-inline me-2">Phone:</strong> 010-020-0340</p>
+                        <p><strong class="d-inline me-2">Email:</strong><a href="#">educationmania@gmail.com</a></p>
+                    </div>
+                    <div class="col-lg-3 col-md-6 col-12">
+                        <h6 class="site-footer-title mb-3">Download Mobile</h6>
+                        <div class="site-footer-thumb mb-4 pb-2">
+                            <div class="d-flex flex-wrap">
+                                <a href="#"><img src="{% static 'images/app-store.png' %}" class="me-3 mb-2 mb-lg-0 img-fluid" alt=""></a>
+                                <a href="#"><img src="{% static 'images/play-store.png' %}" class="img-fluid" alt=""></a>
+                            </div>
+                        </div>
+                        <h6 class="site-footer-title mb-3">conect through Social</h6>
+                        <ul class="social-icon">
+                            <li class="social-icon-item">
+                                <a href="#" class="social-icon-link bi-instagram">
+                                    <link rel="stylesheet" href="https://www.instagram.com/">
+                                </a>
+                            </li>
+                            <li class="social-icon-item">
+                                <a href="#" class="social-icon-link bi-twitter"></a>
+                            </li>
+                            <li class="social-icon-item">
+                                <a href="#" class="social-icon-link bi-whatsapp"></a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="container pt-5">
+                <div class="row align-items-center">
+                    <div class="col-lg-2 col-md-3 col-12">
+                        <a class="navbar-brand" href="{% url 'index' %}">
+                            <img src="{% static 'images/Education Mania Logo.png' %}" class="logo-image img-fluid" alt="templatemo pod talk">
+                        </a>
+                    </div>
+                    <div class="col-lg-7 col-md-9 col-12">
+                        <ul class="site-footer-links">
+                            <li class="site-footer-link-item"><a href="#" class="site-footer-link">Homepage</a></li>
+                            <li class="site-footer-link-item"><a href="#" class="site-footer-link">Browse episodes</a></li>
+                            <li class="site-footer-link-item"><a href="#" class="site-footer-link">Help Center</a></li>
+                            <li class="site-footer-link-item"><a href="#" class="site-footer-link">Contact Us</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-lg-3 col-12">
+                        <p class="copyright-text mb-0">Copyright © 2025 Education Mania. All Rights Reserved<br><br></p>
+                    </div>
+                </div>
+            </div>
+        </footer>
+
+
+        <!-- JAVASCRIPT FILES -->
+        <script src="{% static 'js/jquery.min.js' %}"></script>
+        <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
+        <script src="{% static 'js/owl.carousel.min.js' %}"></script>
+        <script src="{% static 'js/custom.js' %}"></script>
+
+    </body>
+</html>
