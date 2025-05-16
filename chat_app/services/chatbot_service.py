@@ -26,6 +26,28 @@ class ChatbotService:
         self.stop_words = set(stopwords.words('english'))
         self.knowledge_base = {}
         self.api_based = False
+        self.default_response = "I'm sorry, I don't have that information yet."
+        self.keyword_responses = {
+            'hello': "Hi there! How can I assist you today?",
+            'hi': "Hi there! How can I assist you today?",
+            'services': "We offer a variety of services including consulting, development, and support."
+        }
+        self.conversational_data = []
+        
+    def train(self, conversation_list):
+        """Train chatbot with a list of conversational pairs"""
+        for i in range(0, len(conversation_list) - 1, 2):
+            question = conversation_list[i].lower()
+            answer = conversation_list[i+1]
+            self.conversational_data.append((question, answer))
+    
+    def keyword_match_response(self, user_input):
+        """Return a response based on simple keyword matching"""
+        user_input_lower = user_input.lower()
+        for keyword, response in self.keyword_responses.items():
+            if keyword in user_input_lower:
+                return response
+        return None
         
     def fetch_content_from_url(self, url):
         """Fetch and parse content from a URL"""
@@ -89,6 +111,21 @@ class ChatbotService:
         
         return best_match, best_score
     
+    def get_gpt_response(self, user_input):
+        """Get response from OpenAI GPT model directly"""
+        try:
+            import openai
+            openai.api_key = settings.OPENAI_API_KEY
+            
+            response = openai.ChatCompletion.create(
+                model="gpt-3.5-turbo",
+                messages=[{"role": "user", "content": user_input}]
+            )
+            return response['choices'][0]['message']['content']
+        except Exception as e:
+            logger.error(f"OpenAI GPT error: {str(e)}")
+            return None
+    
     def process_query(self, query, base_url=None):
         """Process user query and generate a response"""
         # If using external API (like OpenAI)
@@ -104,6 +141,15 @@ class ChatbotService:
                 'response': f"Based on {best_match['title']}, here's what I found: {self.summarize_content(best_match['content'], query)}",
                 'source': best_match['title']
             }
+        
+        # Keyword matching fallback
+        keyword_response = self.keyword_match_response(query)
+        if keyword_response:
+            return {
+                'response': keyword_response,
+                'source': 'Keyword Match'
+            }
+        
         elif base_url:
             # If we don't have information but have a base URL, suggest browsing
             return {
@@ -111,9 +157,9 @@ class ChatbotService:
                 'source': None
             }
         else:
-            # Generic fallback
+            # Generic fallback using default_response
             return {
-                'response': "I don't have that information. Can you ask something else or be more specific?",
+                'response': self.default_response,
                 'source': None
             }
     
