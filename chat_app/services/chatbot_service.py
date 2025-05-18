@@ -29,8 +29,23 @@ class ChatbotService:
         self.default_response = "I'm sorry, I don't have that information yet."
         self.keyword_responses = {
             'hello': "Hi there! How can I assist you today?",
+            'hey': "Hi there! How can I assist you today?",
             'hi': "Hi there! How can I assist you today?",
             'services': "We offer a variety of services including consulting, development, and support."
+        }
+        self.predefined_options = {
+            'bba': {
+                'type': 'url',
+                'value': '/bba'
+            },
+            'bcomca': {
+                'type': 'url',
+                'value': '/bcomca'
+            },
+            'bcom': {
+                'type': 'url',
+                'value': '/bcom'
+            }
         }
         self.conversational_data = []
         
@@ -126,10 +141,36 @@ class ChatbotService:
             logger.error(f"OpenAI GPT error: {str(e)}")
             return None
     
-    def process_query(self, query, base_url=None):
+    def process_query(self, query, base_url=None, use_live_ai=False):
         """Process user query and generate a response"""
-        # If using external API (like OpenAI)
-        if self.api_based and hasattr(settings, 'OPENAI_API_KEY'):
+        # Check if user is selecting a predefined option
+        if query in self.predefined_options:
+            option = self.predefined_options[query]
+            if option['type'] == 'url':
+                return {
+                    'response': f"Opening the page for {query}: {option['value']}",
+                    'source': 'Predefined Option',
+                    'action': 'open_url',
+                    'url': option['value']
+                }
+            elif option['type'] == 'content':
+                # Fetch content from URL if not already in knowledge base
+                if option['value'] not in self.knowledge_base:
+                    self.fetch_content_from_url(option['value'])
+                content_data = self.knowledge_base.get(option['value'], None)
+                if content_data:
+                    return {
+                        'response': f"Here is the information about {query}: {self.summarize_content(content_data['content'], query)}",
+                        'source': 'Predefined Option Content'
+                    }
+                else:
+                    return {
+                        'response': f"Sorry, I couldn't retrieve information about {query} at the moment.",
+                        'source': None
+                    }
+        
+        # If using external API (like OpenAI) or forced live AI response
+        if (self.api_based or use_live_ai) and hasattr(settings, 'OPENAI_API_KEY'):
             return self.get_api_response(query)
         
         # Otherwise use our knowledge base
