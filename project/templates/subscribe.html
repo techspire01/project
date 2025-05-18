@@ -1,0 +1,102 @@
+<html lang="en">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1" name="viewport"/>
+  <title>
+   Education Mania
+  </title>
+  <script src="https://cdn.tailwindcss.com">
+  </script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
+  <style>
+   @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap");
+   body {
+     font-family: "Inter", sans-serif;
+     background: linear-gradient(135deg, #3b82f6 0%, #ffffff 100%);
+     color: #ffffff;
+   }
+   /* Override text colors for readability on light blue background */
+   h1, h2, p, ul, li, span, button {
+     color: #ffffff;
+   }
+   /* Buttons with dark backgrounds for contrast */
+   .btn-dark {
+     background-color: #1f2937; /* dark slate */
+     color: #ffffff;
+   }
+   /* Gradient login button with light blue to white */
+   .btn-gradient {
+     background: linear-gradient(to right, #3b82f6, #60a5fa);
+     color: white;
+   }
+  </style>
+ </head>
+ <body class="min-h-screen flex items-start justify-center p-6">
+  <div class="max-w-4xl w-full flex flex-col md:flex-row md:items-start md:justify-start gap-10">
+   <!-- Left side with close icon, star icon, and heading -->
+   <div class="flex flex-col gap-6 md:w-[360px]">
+    <button aria-label="Close" class="text-white text-2xl font-light self-start">
+     <i class="fas fa-times">
+     </i>
+    </button>
+    <img alt="Education Mania" class="w-10 h-10" height="100" src="images/Education Mania Logo.png" width="100"/>
+    <h1 class="text-3xl font-extrabold leading-[1.2] text-white">
+     Cnnect with Us for
+     <br/>
+     unlimited Knowledge
+     <br/>
+     
+    </h1>
+   </div>
+   <!-- Middle content with new features list -->
+   <div class="flex flex-col gap-6 md:w-[360px] text-sm font-normal leading-6">
+    <p class="text-lg font-semibold text-white">
+     ₹30 / month
+    </p>
+    <p>
+     Unlimited video access
+    </p>
+    <p>
+     One to one interaction with teachers
+    </p>
+   </div>
+   <!-- Right side with single plan and payment options -->
+   <div class="flex flex-col gap-6 md:w-[360px]">
+    <div class="flex items-center justify-end gap-4">
+     
+    </div>
+    <div class="flex flex-col bg-[#1f2937] rounded-md p-6 text-center text-[#3b82f6] font-semibold text-lg">
+     <span class="mb-4 text-white">
+      One plan for all Students
+     </span>
+     <span class="mb-4 text-white text-4xl font-extrabold">
+      ₹30 / month
+     </span>
+     <ul class="text-white text-left list-disc list-inside space-y-2 mb-6 font-normal text-sm">
+      <li>
+       Unlimited video access
+      </li>
+      <li>
+       One to one interaction with teachers
+      </li>
+     </ul>
+    </div>
+    <div class="bg-[#1f2937] rounded-md p-6 text-white">
+     <h2 class="text-lg font-semibold mb-4">
+      Payment Options
+     </h2>
+     <div class="flex items-center gap-6 mb-6">
+      <img alt="Google Pay logo with multicolor G and Pay text" class="h-10 w-auto" height="40" src="https://storage.googleapis.com/a1aa/image/0e386eeb-3f68-4898-76a1-74a1bf4dab49.jpg" width="80"/>
+      <img alt="Paytm logo with blue text" class="h-10 w-auto" height="40" src="https://storage.googleapis.com/a1aa/image/c01dcb08-bdd9-4f9a-bd83-34ed13dea53a.jpg" width="80"/>
+     </div>
+     <div class="flex flex-col items-center">
+      <img alt="QR code for payment scan, black and white square pattern" class="h-40 w-40 mb-2" height="160" src="https://storage.googleapis.com/a1aa/image/2d40ca09-a159-4400-c8ff-49eb4c25e6ba.jpg" width="160"/>
+      <span class="text-gray-300 text-sm">
+       Scan QR to pay
+      </span>
+     </div>
+    </div>
+   </div>
+  </div>
+ </body>
+</html>
