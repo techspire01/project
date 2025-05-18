@@ -5,10 +5,10 @@ class Command(BaseCommand):
     help = 'Download required NLTK resources'
 
     def handle(self, *args, **kwargs):
-        resources = ['punkt', 'stopwords']
+        resources = ['punkt', 'stopwords', 'punkt_tab']
         for resource in resources:
             try:
-                nltk.data.find(f'tokenizers/{resource}' if resource == 'punkt' else f'corpora/{resource}')
+                nltk.data.find(f'tokenizers/{resource}' if resource == 'punkt' or resource == 'punkt_tab' else f'corpora/{resource}')
                 self.stdout.write(self.style.SUCCESS(f'NLTK resource "{resource}" already exists.'))
             except LookupError:
                 self.stdout.write(f'Downloading NLTK resource: {resource}...')
